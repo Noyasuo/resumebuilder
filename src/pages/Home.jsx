@@ -5,7 +5,7 @@ import ResumePDF from '../components/ResumePDF';
 import { useResume } from '../context/ResumeContext';
 import { pdf } from '@react-pdf/renderer';
 
-const Home = () => {
+const Home = ({ onNavigate }) => {
   const { resumeData } = useResume();
 
   const handleDownloadPDF = async () => {
@@ -28,12 +28,18 @@ const Home = () => {
         </div>
 
         {/* Download Button */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={handleDownloadPDF}
             className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition-colors duration-200"
           >
             📥 Download as PDF
+          </button>
+          <button
+            onClick={() => onNavigate('landing')}
+            className="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-lg hover:bg-purple-700 transition-colors duration-200"
+          >
+            ✨ More Features
           </button>
         </div>
 
