@@ -24,9 +24,20 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   contactInfo: {
+    flexDirection: 'row',
     fontSize: 10,
     color: '#666',
     marginBottom: 3,
+    gap: 8,
+  },
+  contactText: {
+    fontSize: 10,
+    color: '#666',
+  },
+  separator: {
+    fontSize: 10,
+    color: '#999',
+    marginHorizontal: 4,
   },
   section: {
     marginBottom: 15,
@@ -109,15 +120,23 @@ const ResumePDF = ({ resumeData }) => (
         <Text style={styles.title}>
           {resumeData.personalInfo.title || 'Professional Title'}
         </Text>
-        {resumeData.personalInfo.email && (
-          <Text style={styles.contactInfo}>Email: {resumeData.personalInfo.email}</Text>
-        )}
-        {resumeData.personalInfo.phone && (
-          <Text style={styles.contactInfo}>Phone: {resumeData.personalInfo.phone}</Text>
-        )}
-        {resumeData.personalInfo.address && (
-          <Text style={styles.contactInfo}>Address: {resumeData.personalInfo.address}</Text>
-        )}
+        <View style={styles.contactInfo}>
+          {resumeData.personalInfo.email && (
+            <Text style={styles.contactText}>{resumeData.personalInfo.email}</Text>
+          )}
+          {resumeData.personalInfo.email && (resumeData.personalInfo.phone || resumeData.personalInfo.address) && (
+            <Text style={styles.separator}>|</Text>
+          )}
+          {resumeData.personalInfo.phone && (
+            <Text style={styles.contactText}>{resumeData.personalInfo.phone}</Text>
+          )}
+          {resumeData.personalInfo.phone && resumeData.personalInfo.address && (
+            <Text style={styles.separator}>|</Text>
+          )}
+          {resumeData.personalInfo.address && (
+            <Text style={styles.contactText}>{resumeData.personalInfo.address}</Text>
+          )}
+        </View>
       </View>
 
       {/* Summary */}
