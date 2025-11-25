@@ -45,7 +45,7 @@ const ResumeForm = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       {/* Header */}
       <div className="flex justify-between items-center border-b p-6 pb-4">
         <h2 className="text-2xl font-bold text-gray-800">Resume Builder</h2>
@@ -57,8 +57,9 @@ const ResumeForm = () => {
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex border-b relative">
+      {/* Tabs - Scrollable on mobile only */}
+      <div className="overflow-x-auto md:overflow-x-visible">
+        <div className="flex border-b relative min-w-max md:min-w-0">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -100,6 +101,7 @@ const ResumeForm = () => {
             </div>
           )}
         </div>
+      </div>
       </div>
 
       {/* Tab Content */}
